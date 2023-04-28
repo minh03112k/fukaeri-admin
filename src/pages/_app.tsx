@@ -4,6 +4,7 @@ import { useEffect } from 'react';
 import { ChakraProvider } from '@chakra-ui/react';
 import theme from "../theme";
 import Layout from '@/components/Layout';
+import "bootstrap/dist/css/bootstrap.min.css"; // Import bootstrap CSS
 
 
 export default function App({ Component, pageProps }: AppProps) {
