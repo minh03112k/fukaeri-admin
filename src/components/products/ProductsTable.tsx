@@ -15,13 +15,14 @@ import {
   MenuItem,
   MenuList,
 } from '@chakra-ui/react';
+import { useRouter } from 'next/router';
 import { useEffect } from 'react';
 import { BsThreeDotsVertical } from 'react-icons/bs';
 
 export default function ProductsTable(props: IProductsTable) {
   const { listProducts, handleReload } = props;
   console.log('listProducts', listProducts);
-
+  const router = useRouter();
   const handleDeleteProduct = (id: string) => {
     productsApi.deleteProduct(id).then(res => {
       handleReload()
@@ -38,6 +39,7 @@ export default function ProductsTable(props: IProductsTable) {
             <Th>Product Prices</Th>
             <Th>Number Of Purchases</Th>
             <Th>Available Products</Th>
+            <Th>Action</Th>
           </Tr>
           {listProducts?.map((item: IProductsTableList, index: number) => (
             <Tr key={item.id}>
@@ -52,7 +54,7 @@ export default function ProductsTable(props: IProductsTable) {
                     <BsThreeDotsVertical />
                   </MenuButton>
                   <MenuList>
-                    <MenuItem>Detail</MenuItem>
+                    <MenuItem onClick={() => router.push(`/products/${item.id}`)}>Detail</MenuItem>
                     <MenuItem onClick={() => handleDeleteProduct(item.id)}>Delete</MenuItem>
                   </MenuList>
                 </Menu>

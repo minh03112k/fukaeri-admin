@@ -94,6 +94,7 @@ export default function Products() {
       </Box>
 
       <CreateProductModal
+        handleReload={handleReload}
         isOpen={isModalOpen}
         onClose={() => setIsModalOpen(false)}
       />

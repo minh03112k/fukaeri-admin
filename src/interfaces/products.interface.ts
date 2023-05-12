@@ -15,3 +15,19 @@ export interface IProductsTable {
   listProducts: IProductsTableList[];
   handleReload: () => void;
 }
+
+export interface IParamsCreateProduct {
+  productName: string,
+  imageUrl: File | null,
+  description: string,
+  content: string,
+  price: string,
+}
+
+export interface CreateProductModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  children?: React.ReactNode;
+  handleReload: () => void;
+}
+
