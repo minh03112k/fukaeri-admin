@@ -7,6 +7,9 @@ export default {
   addProduct(params: FormData) {
     return API.post(`${AppSettings.API_PRODUCTS_LIST}/add-product`, params)
   },
+  updateProduct(id: string, params: FormData) {
+    return API.put(`${AppSettings.API_PRODUCTS_LIST}/${id}`, params);
+  },
   getListProducts() {
     return API.get(`${AppSettings.API_PRODUCTS_LIST}`);
   },

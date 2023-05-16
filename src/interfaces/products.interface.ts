@@ -19,7 +19,13 @@ export interface IProductsTable {
 export interface IParamsCreateProduct {
   productName: string,
   imageUrl: File | null,
-  description: string,
+  content: string,
+  price: string,
+}
+
+export interface IParamsUpdatedProduct {
+  productName: string,
+  imageUrl: File | null,
   content: string,
   price: string,
 }

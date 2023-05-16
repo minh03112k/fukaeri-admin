@@ -2,7 +2,7 @@ import React from 'react';
 import { Box, Text, useColorModeValue } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import SidebarTab from './SidebarTab';
-import { ROUTES } from '@/constant/const';
+import { ROUTES } from '@/constants/const';
 
 // interface SidebarProps {
 //   title: string;

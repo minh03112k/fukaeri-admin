@@ -54,8 +54,6 @@ export interface ProductsData {
 export default function Products() {
   const router = useRouter();
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
-  const [isEditModalOpen, setIsEditModalOpen] = useState(false);
-  const [selectedProduct, setSelectedProduct] = useState({});
   const [productsData, setProductsData] = useState<IProductsTableList[]>([]);
   const [isReload, setIsReload] = useState<boolean>(false);
 
@@ -68,17 +66,6 @@ export default function Products() {
 
   const handleReload = () => {
     setIsReload(!isReload);
-  };
-
-  const handleEditProduct = (productData: any) => {
-    // handle form submission here
-    console.log(productData);
-    setIsEditModalOpen(false);
-  };
-
-  const handleEditButtonClick = (product: any) => {
-    setSelectedProduct(product);
-    setIsEditModalOpen(true);
   };
 
   return (

@@ -1,5 +1,8 @@
 import productsApi from '@/api/productsApi';
-import { CreateProductModalProps, IParamsCreateProduct } from '@/interfaces/products.interface';
+import {
+  CreateProductModalProps,
+  IParamsCreateProduct,
+} from '@/interfaces/products.interface';
 import { CreateProductInit } from '@/mocks/product';
 import {
   Modal,
@@ -22,8 +25,6 @@ export default function CreateProductModal(props: CreateProductModalProps) {
   const [createNewProductParams, setCreateNewProductParams] = useState<IParamsCreateProduct>(CreateProductInit);
   const [imageFile, setImageFile] = useState<File | null>(null);
 
-  console.log('imageFile', imageFile)
-
   const handleOnChange = (event: any) => {
     const { name, value } = event.target;
     setCreateNewProductParams({
@@ -31,10 +32,9 @@ export default function CreateProductModal(props: CreateProductModalProps) {
       [name]: value,
     });
   };
-  
 
   const handleImageChange = (event: any) => {
-    console.log('event.target', event)
+    console.log('event.target', event);
     setImageFile(event.target.files[0]);
   };
 
@@ -45,15 +45,20 @@ export default function CreateProductModal(props: CreateProductModalProps) {
       formData.append(key, value as string);
     });
     if (imageFile) {
-      formData.append("imageUrl", imageFile);
+      formData.append('imageUrl', imageFile);
     }
     console.log('formData', formData);
-    productsApi.addProduct(formData).then(res => {
-      if(res && res.data) {
-        handleReload();
-        onClose();
-      }
-    });
+    productsApi
+      .addProduct(formData)
+      .then((res) => {
+        if (res && res.data) {
+          handleReload();
+          onClose();
+        }
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   };
 
   return (
